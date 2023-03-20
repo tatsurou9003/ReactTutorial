@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { InputTodo } from "./components/InputTodo"
+import { InputTodo } from "./components/InputTodo";
+import { IncompleteTodos } from "./components/IncompleteTodos";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
@@ -50,23 +51,16 @@ export const App = () => {
 
   return (
     <>
-      <InputTodo todoText={todoText} onChange={onChangeTodoText} onClick={onClickAdd} />
-      <div className="incomplete-area">
-        <p className="title">Incomplete TODO</p>
-        {incompleteTodos.map((todo, index) => {
-          return (
-            // ループでレンダリングする場合React側の目印として一意なkeyを設定する
-            <div key={todo} className="list-row">
-              <ul>
-                <li>{todo}</li>
-                <button onClick={() => onClickComplete(index)}>Complete</button>
-                {/* JSXで関数に引数を与える場合の書き方 */}
-                <button onClick={() => onClickDelete(index)}>Delete</button>
-              </ul>
-            </div>
-          );
-        })}
-      </div>
+      <InputTodo
+        todoText={todoText}
+        onChange={onChangeTodoText}
+        onClick={onClickAdd}
+      />
+      <IncompleteTodos
+        todos={incompleteTodos}
+        onClickComplete={onClickComplete}
+        onClickDelete={onClickDelete}
+      />
       <div className="complete-area">
         <p className="title">Complete TODO</p>
         {completeTodos.map((todo, index) => {
