@@ -50,7 +50,7 @@ export const App = () => {
 
   return (
     <>
-      <InputTodo />
+      <InputTodo todoText={todoText} onChange={onChangeTodoText} onClick={onClickAdd} />
       <div className="incomplete-area">
         <p className="title">Incomplete TODO</p>
         {incompleteTodos.map((todo, index) => {
