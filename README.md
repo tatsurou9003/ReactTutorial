@@ -1,2 +1,2 @@
 # ReactTutorial
-Created with CodeSandbox
+Reactのチュートリアルとして簡単なTodo機能をCodeSandboxで作成
